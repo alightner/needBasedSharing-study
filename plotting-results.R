@@ -31,13 +31,15 @@ model_dyad_plot <-
 
 
 load("data/model-survival.rda")
-model_heatmap <- out %>% 
+model_heatmap <- 
+  out %>% 
   select(group_size, greedy, stingy, t50) %>% 
   filter(group_size %in% c(2, 4, 8, 16)) %>% 
   mutate(group_size = paste0("N = ", group_size),
          group_size = factor(group_size, levels = c("N = 2", "N = 4", "N = 8", "N = 16")),
          numlab = case_when(
-           (greedy + stingy) %% 0.5 == 0 ~ TRUE, 
+           greedy == 0 & stingy %% 0.5 == 0 ~ TRUE, 
+           greedy == 1 & stingy %% 0.5 == 0 ~ TRUE, 
            TRUE ~ FALSE
          ),
          txtcol = 1 - t50) %>% 
@@ -46,9 +48,10 @@ model_heatmap <- out %>%
   scale_fill_viridis_c() + 
   theme_classic() +
   geom_contour(aes(z = t50), colour = "white", linetype=2) +
-  geom_text(aes(label = ifelse(numlab, round(t50, 2), ""), colour = ifelse(txtcol < 0.5, "a", "b"))) +
+  geom_text(aes(label = ifelse(numlab, round(t50, 2), ""), colour = ifelse(txtcol < 0.51, "a", "b"))) +
   scale_colour_manual(values = c("black", "white")) +
   facet_wrap(~group_size) +
   labs(x = "Prob. greedy defection", y = "Prob. stingy defection", fill = "Survival") +
   guides(colour = "none") +
   theme(legend.position = "top")
+
