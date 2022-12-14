@@ -4,7 +4,7 @@ author: "Aaron D. Lightner, Anne C. Pisor, Edward H. Hagen"
 abstract: |
   Need-based sharing pools risk by following two cooperative rules: help others when asked, and only request help when in need. In a two-part study, we first expanded an agent-based model of need-based sharing partnerships, adding defection and varying partnership sizes. We show that refusing to help always has a long-term cost, which increases with larger partnerships. In contrast, "greedy" requests that are not based on survival risk carry little-to-no cost. We then conducted an experimental vignette study of osotua, a need-based sharing tradition, with Tanzanian Maasai pastoralists. We found that participants generally complied with osotua requests, but shared larger amounts for requests that were based on survival risk. We conclude by proposing an expanded framework for need-based sharing, where the cost asymmetry among types of defection generally favors a decision heuristic where individuals prefer sharing with those in need, but err on the side of generosity when need is ambiguous.  
 
-  [Abstract word count: 150, Main text word count: 4924]
+  [Abstract word count: 150, Main text word count: 7040]
 
 output:
   bookdown::pdf_document2:
@@ -26,10 +26,15 @@ knitr::opts_chunk$set(fig.env="figure")
 knitr::opts_chunk$set(dev = "cairo_pdf")
 ```
 
+\pagenumbering{gobble}
+
+\newpage
 
 ```{r analysis}
 source('analysis.R')
 ```
+
+\pagenumbering{arabic}
 
 \section{Introduction}
 

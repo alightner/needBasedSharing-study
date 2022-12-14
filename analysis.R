@@ -97,21 +97,21 @@ mo_insecure <- lm(insecure ~ scale(degree_share), data=d)
 mo_insecure2 <- lm(insecure ~ degree_share + I(degree_share^2), data=d)
 
 osotua_insecure <- 
-  visreg(mo_insecure2, points=NULL, gg=TRUE, partial=FALSE, rug=FALSE) +
+  visreg(mo_insecure, points=NULL, gg=TRUE, partial=FALSE, rug=FALSE) +
   geom_count(alpha=0.6) +
   scale_size(range=c(1,4)) +
   theme_bw() +
   labs(x='\nosotua degree', y='food insecurity\n', size="number of\nparticipants") +
   theme(legend.position = "top")
 
-# exp_beta_insecure <- signif(mo_insecure$coefficients[2], 2)
-# exp_p_insecure <- signif(summary(mo_insecure)$coef[2,4], 2)
-# exp_se_insecure <- signif(summary(mo_insecure)$coef[2,2], 2)
+exp_beta_insecure <- signif(mo_insecure$coefficients[2], 2)
+exp_p_insecure <- signif(summary(mo_insecure)$coef[2,4], 2)
+exp_se_insecure <- signif(summary(mo_insecure)$coef[2,2], 2)
 
-exp_beta_insecure <- signif(mo_insecure2$coefficients[2], 2)
-exp_p_insecure <- signif(summary(mo_insecure2)$coef[2,4], 2)
-exp_se_insecure <- signif(summary(mo_insecure2)$coef[2,2], 2)
-
-exp_beta_insecure2 <- signif(mo_insecure2$coefficients[3], 2)
-exp_p_insecure2 <- signif(summary(mo_insecure2)$coef[3,4], 2)
-exp_se_insecure2 <- signif(summary(mo_insecure2)$coef[3,2], 2)
+# exp_beta_insecure <- signif(mo_insecure2$coefficients[2], 2)
+# exp_p_insecure <- signif(summary(mo_insecure2)$coef[2,4], 2)
+# exp_se_insecure <- signif(summary(mo_insecure2)$coef[2,2], 2)
+# 
+# exp_beta_insecure2 <- signif(mo_insecure2$coefficients[3], 2)
+# exp_p_insecure2 <- signif(summary(mo_insecure2)$coef[3,4], 2)
+# exp_se_insecure2 <- signif(summary(mo_insecure2)$coef[3,2], 2)
